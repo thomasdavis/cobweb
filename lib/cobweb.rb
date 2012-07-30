@@ -198,6 +198,8 @@ class Cobweb
           
         end
         # add content to cache if required
+        puts "THE RESPONSE CODE IS WRONG OR RIGHT XXX #{response.code.to_i}"
+
         if @options[:cache] && response.code.to_i != 404
           redis.set(unique_id, Marshal.dump(content))
           redis.expire unique_id, @options[:cache].to_i
